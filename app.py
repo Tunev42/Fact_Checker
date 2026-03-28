@@ -161,7 +161,7 @@ def verification_results(data):
         ])
 
         if claim.get('explanation'):
-            lines.append(f"   Пояснение: {claim['explanation']}")
+            lines.append(f"Пояснение: {claim['explanation']}")
 
         if claim.get('sources'):
             lines.append("Источники:")
