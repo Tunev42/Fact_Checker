@@ -12,7 +12,7 @@ load_dotenv()
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'k17m12t12!')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', '')
 app.config['SESSION_TYPE'] = 'filesystem'
 
 db = SQLAlchemy(app)
