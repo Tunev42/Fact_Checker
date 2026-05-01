@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Проверка фактов{% endblock %}
+{% block styles %}
+<style>
+    .checker h2 {
+        margin-bottom: 10px;
+    }
+    .checker .subtitle {
+        color: #666;
+        margin-bottom: 25px;
+    }
+    body.dark .checker .subtitle {
+        color: #aaa;
+    }
+    .checker textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 20px;
+        margin: 15px 0;
+    }
+    .token-status {
+        background: rgba(0,0,0,0.05);
+        padding: 10px 15px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    body.dark .token-status {
+        background: rgba(255,255,255,0.1);
+    }
+    .premium-badge {
+        background: linear-gradient(135deg, #ffd700, #ffb347);
+        padding: 10px;
+        border-radius: 30px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .result {
+        background: var(--card-bg);  /* или #2d3748 */
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 25px;
+        color: white;  /* ← ДОБАВЬ ЭТУ СТРОКУ */
+    }
+    body.dark .result {
+        background: #2d3748;
+    }
+    .examples button {
+        background: #e0e0e0;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+    }
+    body.dark .examples button {
+        background: #444;
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="card checker">
+    <h2>Проверка фактов</h2>
+    <p class="subtitle">Введите утверждение для проверки</p>
+
+    {% if is_premium %}
+        <div class="premium-badge">ПРЕМИУМ — Безлимитные проверки</div>
+    {% else %}
+        <div class="token-status">
+            Осталось проверок сегодня: <strong>{{ tokens_remaining }}/5</strong>
+            <a href="/upgrade" style="margin-left: 15px; color:#667eea;">Получить премиум →</a>
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        <textarea name="title" rows="4" placeholder="Например: Вода закипает при 100 градусах Цельсия" required></textarea>
+        <button type="submit" class="btn">Проверить</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <pre style="white-space: pre-wrap; font-family: monospace; line-height: 1.6;">{{ result }}</pre>
+        </div>
+    {% endif %}
+
+    <div class="examples" style="margin-top: 25px;">
+        <p>Примеры:</p>
+        <button onclick="setExample('Земля круглая')">Земля круглая</button>
+        <button onclick="setExample('Человек использует только 10% мозга')">10% мозга</button>
+        <button onclick="setExample('Солнце вращается вокруг Земли')">Солнце вокруг Земли</button>
+    </div>
+</div>
+
+<script>
+    const ta = document.querySelector('textarea');
+    function setExample(t) { ta.value = t; }
+</script>
+{% endblock %}

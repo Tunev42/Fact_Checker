@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Вход{% endblock %}
+{% block styles %}
+<style>
+    .login-box {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .login-box h2 {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .login-box input {
+        margin: 10px 0;
+        padding: 12px;
+    }
+    .login-box .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .login-box p {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .login-box a {
+        color: #667eea;
+        text-decoration: none;
+    }
+    .login-box a:hover {
+        text-decoration: underline;
+    }
+    body.dark .login-box a {
+        color: #8b9eff;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="card login-box">
+    <h2>Вход</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Логин" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit" class="btn">Войти</button>
+    </form>
+    <p><a href="/auto">Нет аккаунта?</a></p>
+</div>
+{% endblock %}
