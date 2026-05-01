@@ -11,7 +11,7 @@
 - Лимит 5 бесплатных проверок в день
 - Премиум-подписка (безлимит)
 - История всех проверок
-- Тёмная тема
+- Темная тема
 
 ## Технологии
 - Python + Flask
@@ -27,26 +27,22 @@
 ## Быстрый старт
 
 1. Клонируйте репозиторий:
-   git clone https://github.com/Tunev42/Fact_Checker.git
-   cd Fact_Checker
+
+```bash
+git clone https://github.com/Tunev42/Fact_Checker.git
+cd Fact_Checker
+```
+
 2. Установите зависимости:
-   pip install flask flask-sqlalchemy werkzeug python-dotenv
+
+```bash
+pip install flask flask-sqlalchemy werkzeug python-dotenv
+```
 
 3. Запустите приложение:
-      bash
-   python app.py
 
-4. Откройте в браузере:
-   http://127.0.0.1:5000
+```bash
+python app.py
+```
 
-Структура проекта
-app.py — главный файл приложения
-
-models.py — модели базы данных
-
-templates/ — HTML-шаблоны
-
-factcheck.py — логика проверки фактов
-
-## Интерфейс
-![Главная страница](screenshot.png)
+4. Откройте в браузере: http://127.0.0.1:5000
